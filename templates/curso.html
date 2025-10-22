@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detalle del curso</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .card {
+        max-width: 600px;
+        margin: 80px auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .card-header {
+        background-color: #212529;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+      }
+      p.label {
+        font-weight: 600;
+        color: #6c757d;
+        margin-bottom: 0.1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center">
+          <h4>Detalle del Curso</h4>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <p class="label">ID del curso</p>
+            <h2>{{ dato.id }}</h2>
+          </div>
+
+          <div class="mb-3">
+            <p class="label">Nombre</p>
+            <h2>{{ dato.nombre }}</h2>
+          </div>
+
+          <div class="mb-3">
+            <p class="label">Instructor</p>
+            <h2>{{ dato.instructor }}</h2>
+          </div>
+
+          <div class="mb-3">
+            <p class="label">Tópico</p>
+            <h2>{{ dato.topico }}</h2>
+          </div>
+
+          <div class="text-end mt-4">
+            <a href="{{url_for('inicio')}}" class="btn btn-secondary">
+              ← Volver al listado
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+  </body>
+</html>
