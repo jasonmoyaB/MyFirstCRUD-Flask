@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_migrate import Migrate
 from models import db, Curso  # <-- importamos db y el modelo desde models
 
+# $env:FLASK_DEBUG = "1"
+# flask run
 
 app = Flask(__name__)
 
@@ -45,8 +47,32 @@ def insertarDatos():
         )
         db.session.add(nuevo)
         db.session.commit()
+
         return redirect(url_for("inicio"))
     return render_template("insertar.html")
+
+
+@app.route("/editar/<int:id>", methods= ["GET", "POST"])
+def editar(id):
+    curso = Curso.query.get_or_404(id)
+    if request.method == "POST":
+        curso.nombre = request.form["nombre"]
+        curso.instructor = request.form["instructor"]
+        curso.topico= request.form["topico"]
+        db.session.commit()
+        return redirect(url_for("inicio"))
+    return render_template("editar.html", curso = curso)
+
+
+@app.route("/eliminar/<int:id>", methods = ["GET", "POST"], endpoint = "eliminar")
+def elimar(id):
+    curso = Curso.query.get_or_404(id)
+    if request.method == "POST":
+        db.session.delete(curso)
+        db.session.commit()
+        return redirect(url_for("inicio"))
+    return render_template("eliminar.html",curso= curso)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

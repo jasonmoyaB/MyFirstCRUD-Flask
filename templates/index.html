@@ -118,6 +118,7 @@
                 <!-- <th scope="col">Instructor</th>
                 <th scope="col">Tópico</th> -->
                 <th scope="col">Detalle</th>
+                <th scope="col">Acciones</th>
                 <!-- <th scope="col">Acciones</th> -->
               </tr>
             </thead>
@@ -130,10 +131,29 @@
                 <td>
                   <a
                     href="{{ url_for('curso', id=curso.id) }}"
-                    class="btn btn-info btn-sm"
+                    class="btn btn-primary"
                   >
                     Ver
                   </a>
+                </td>
+                <td>
+                  <a
+                    href="{{ url_for('editar', id=curso.id) }}"
+                    class="btn btn-warning btn-sm"
+                  >
+                    <i class="fa-solid fa-pen"></i> Editar
+                  </a>
+
+                  <form
+                    action="{{ url_for('eliminar', id=curso.id) }}"
+                    method="POST"
+                    style="display: inline"
+                    onsubmit="return confirm('¿Seguro que deseas eliminar este curso?');"
+                  >
+                    <button type="submit" class="btn btn-danger btn-sm">
+                      <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
+                  </form>
                 </td>
               </tr>
               {% else %}
