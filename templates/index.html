@@ -127,7 +127,14 @@
                 <td>{{ curso.nombre }}</td>
                 <!-- <td>{{ curso.instructor }}</td>
                 <td>{{ curso.topico }}</td> -->
-                <td><a href="{{url_for('curso',id=curso.id)}}">ver</a></td>
+                <td>
+                  <a
+                    href="{{ url_for('curso', id=curso.id) }}"
+                    class="btn btn-info btn-sm"
+                  >
+                    Ver
+                  </a>
+                </td>
               </tr>
               {% else %}
               <tr>
